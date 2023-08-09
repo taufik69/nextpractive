@@ -10,6 +10,7 @@ export const metadata = {
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
+  weight: ["100", "200", "300", "400", "500"],
 });
 
 export default function RootLayout({ children }) {

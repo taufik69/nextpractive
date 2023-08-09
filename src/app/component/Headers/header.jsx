@@ -53,6 +53,9 @@ const Index = () => {
               <li>
                 <Link href="/Contact"> contact </Link>
               </li>
+              <li>
+                <Link href="/moive"> moive </Link>
+              </li>
             </ul>
           </div>
         </div>

@@ -1,17 +1,11 @@
-import React from "react";
-import Image from "next/image";
-import blogimg from "../../../public/download.jpg";
+"use client";
+import React, { useState } from "react";
 const Blog = () => {
+  const names = ["Tim", "Joe", "Bel", "Lee"];
+  const [results, setResults] = useState();
   return (
     <div className="bg-black text-white font-3xl text-center p-16">
-      <h1>This is blog page</h1>
-      <Image
-        src={blogimg}
-        width={1000}
-        quality={80}
-        height={200}
-        alt="Picture of the author"
-      />
+      <h1>This is block page</h1>
     </div>
   );
 };
