@@ -21,7 +21,16 @@ const contact = () => {
     }
   };
 
-  console.log("userinput :", userinput);
+  // handle all form data this HandleFromData
+  const HandleFromData = (event) => {
+    event.preventDefault();
+    if (userinput.password === userinput.confirm_password) {
+      alert("milece ");
+      setuserinput({});
+    } else {
+      alert("milece na toh   ");
+    }
+  };
   return (
     <div className=" p-16">
       <form>
@@ -38,7 +47,6 @@ const contact = () => {
               name="first_name"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="John"
-              required
               onChange={handleInput}
             />
           </div>
@@ -54,7 +62,6 @@ const contact = () => {
               name="last_name"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Doe"
-              required
               onChange={handleInput}
             />
           </div>
@@ -72,7 +79,6 @@ const contact = () => {
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="123-45-678"
               pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-              required
               onChange={handleInput}
             />
           </div>
@@ -90,7 +96,6 @@ const contact = () => {
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placehold
             er="john.doe@company.com"
-            required
             onChange={handleInput}
           />
         </div>
@@ -106,7 +111,6 @@ const contact = () => {
             name="password"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="•••••••••"
-            required
             onChange={handleInput}
           />
         </div>
@@ -122,7 +126,6 @@ const contact = () => {
             name="confirm_password"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
             placeholder="•••••••••"
-            required
             onChange={handleInput}
           />
         </div>
@@ -133,7 +136,6 @@ const contact = () => {
               type="checkbox"
               value=""
               class="w-4 h-4 border border-gray-300 rounded bg-gray-50  "
-              required
               onChange={handleInput}
             />
           </div>
@@ -146,8 +148,9 @@ const contact = () => {
           </label>
         </div>
         <button
+          onClick={HandleFromData}
           type="submit"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center "
         >
           Submit
         </button>
