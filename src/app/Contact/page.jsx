@@ -1,7 +1,27 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 
 const contact = () => {
+  let [userinput, setuserinput] = useState({
+    first_name: "",
+    last_name: "",
+    phone: "",
+    email: "",
+    password: "",
+    confirm_password: "",
+    remember: false,
+  });
+
+  const handleInput = (event) => {
+    const { name, value, checked } = event.target;
+    if (name == "remember") {
+      setuserinput({ ...userinput, [name]: checked });
+    } else {
+      setuserinput({ ...userinput, [name]: value });
+    }
+  };
+
+  console.log("userinput :", userinput);
   return (
     <div className=" p-16">
       <form>
@@ -15,10 +35,11 @@ const contact = () => {
             </label>
             <input
               type="text"
-              id="first_name"
+              name="first_name"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="John"
               required
+              onChange={handleInput}
             />
           </div>
           <div>
@@ -30,27 +51,14 @@ const contact = () => {
             </label>
             <input
               type="text"
-              id="last_name"
+              name="last_name"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Doe"
               required
+              onChange={handleInput}
             />
           </div>
-          <div>
-            <label
-              for="company"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Company
-            </label>
-            <input
-              type="text"
-              id="company"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Flowbite"
-              required
-            />
-          </div>
+
           <div>
             <label
               for="phone"
@@ -60,41 +68,12 @@ const contact = () => {
             </label>
             <input
               type="tel"
-              id="phone"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              name="phone"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="123-45-678"
               pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
               required
-            />
-          </div>
-          <div>
-            <label
-              for="website"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Website URL
-            </label>
-            <input
-              type="url"
-              id="website"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="flowbite.com"
-              required
-            />
-          </div>
-          <div>
-            <label
-              for="visitors"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Unique visitors (per month)
-            </label>
-            <input
-              type="number"
-              id="visitors"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder=" "
-              required
+              onChange={handleInput}
             />
           </div>
         </div>
@@ -107,11 +86,12 @@ const contact = () => {
           </label>
           <input
             type="email"
-            id="email"
+            name="email"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placehold
             er="john.doe@company.com"
             required
+            onChange={handleInput}
           />
         </div>
         <div class="mb-6">
@@ -123,10 +103,11 @@ const contact = () => {
           </label>
           <input
             type="password"
-            id="password"
+            name="password"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="•••••••••"
             required
+            onChange={handleInput}
           />
         </div>
         <div class="mb-6">
@@ -138,31 +119,27 @@ const contact = () => {
           </label>
           <input
             type="password"
-            id="confirm_password"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            name="confirm_password"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
             placeholder="•••••••••"
             required
+            onChange={handleInput}
           />
         </div>
         <div class="flex items-start mb-6">
           <div class="flex items-center h-5">
             <input
-              id="remember"
+              name="remember"
               type="checkbox"
               value=""
-              class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+              class="w-4 h-4 border border-gray-300 rounded bg-gray-50  "
               required
+              onChange={handleInput}
             />
           </div>
-          <label
-            for="remember"
-            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-          >
+          <label for="remember" class="ml-2 text-sm font-medium text-gray-900 ">
             I agree with the{" "}
-            <a
-              href="#"
-              class="text-blue-600 hover:underline dark:text-blue-500"
-            >
+            <a href="#" class="text-blue-600 hover:underline">
               terms and conditions
             </a>
             .
